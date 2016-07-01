@@ -8,6 +8,16 @@
 
 'use strict';
 
+const target2resources = new Map();
+
+target2resources.set('movies', 'films');
+target2resources.set('characters', 'people');
+target2resources.set('species', 'species');
+target2resources.set('starships', 'starships');
+target2resources.set('planets', 'planets');
+target2resources.set('vehicles', 'vehicles');
+
+
 module.exports = function(grunt) {
 
   // Please see the Grunt documentation for more information regarding task

@@ -1,13 +1,19 @@
 {
-  "curly": true,
-  "eqeqeq": true,
-  "immed": true,
-  "latedef": true,
-  "newcap": true,
-  "noarg": true,
-  "sub": true,
-  "undef": true,
-  "boss": true,
-  "eqnull": true,
-  "node": true
+	"curly": true,
+	"eqeqeq": true,
+	"esversion": 6,
+	"esnext": true,
+	"globals": {
+		"Map": true
+	},
+	"immed": true,
+	"latedef": true,
+	"newcap": true,
+	"noarg": true,
+	"strict": true,
+	"sub": true,
+	"undef": true,
+	"boss": true,
+	"eqnull": true,
+	"node": true
 }
