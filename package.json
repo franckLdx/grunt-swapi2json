@@ -42,6 +42,7 @@
     "tasks"
   ],
   "dependencies": {
+    "co": "^4.6.0",
     "swapi-node": "^0.4.0"
   }
 }

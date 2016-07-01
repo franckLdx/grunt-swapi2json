@@ -8,53 +8,37 @@
 
 'use strict';
 
-const target2resources = new Map();
+const lib = require('../lib');
+const co = require('co');
 
-target2resources.set('movies', 'films');
-target2resources.set('characters', 'people');
-target2resources.set('species', 'species');
-target2resources.set('starships', 'starships');
-target2resources.set('planets', 'planets');
-target2resources.set('vehicles', 'vehicles');
+function getOne(grunt, target) {
+	return lib.getAll(target).then(
+		(data) => {
+			grunt.log.ok(`${target}: ${data.length} entyties`);
+		}, (err) => {
+			grunt.log.warn(err);
+		}
+	);
+}
 
+module.exports = function (grunt) {
 
-module.exports = function(grunt) {
+	// Please see the Grunt documentation for more information regarding task
+	// creation: http://gruntjs.com/creating-tasks
 
-  // Please see the Grunt documentation for more information regarding task
-  // creation: http://gruntjs.com/creating-tasks
-
-  grunt.registerMultiTask('swapi2json', 'This download swapi data available at http://swapi.co/ and store them in json files. Useful when one wanted to create a generated site or want to store those data locally', function() {
-    // Merge task-specific and/or target-specific options with these defaults.
-    var options = this.options({
-      punctuation: '.',
-      separator: ', '
-    });
-
-    // Iterate over all specified file groups.
-    this.files.forEach(function(f) {
-      // Concat specified files.
-      var src = f.src.filter(function(filepath) {
-        // Warn on and remove invalid source files (if nonull was set).
-        if (!grunt.file.exists(filepath)) {
-          grunt.log.warn('Source file "' + filepath + '" not found.');
-          return false;
-        } else {
-          return true;
-        }
-      }).map(function(filepath) {
-        // Read file source.
-        return grunt.file.read(filepath);
-      }).join(grunt.util.normalizelf(options.separator));
-
-      // Handle options.
-      src += options.punctuation;
-
-      // Write the destination file.
-      grunt.file.write(f.dest, src);
-
-      // Print a success message.
-      grunt.log.writeln('File "' + f.dest + '" created.');
-    });
-  });
-
+	grunt.registerMultiTask('swapi2json', 'This download swapi data available at http://swapi.co/ and store them in json files. Useful when one wanted to create a generated site or want to store those data locally', function () {
+		const done = this.async();
+		const promises = [];
+		if (this.target === 'all') {
+			for (let resource of ['films','people', 'planets', 'species', 'starships', 'vehicles']) {
+				promises.push(getOne(grunt, resource));
+			}
+		} else {
+			promises.push(getOne(grunt, this.target));
+		}
+		Promise.all(promises).then(
+			done,
+			() => { done(false); }
+		);
+	});
 };
