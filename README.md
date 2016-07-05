@@ -97,11 +97,11 @@ Use [swapi resource(s)](http://swapi.co/documentation#root) as target name.
 grunt.initConfig({
   swapi2json: {
     films: {
-		dir: './starwars/movies'
-	},
-	people: {
-		dir: './starwars/characters'
-	},
+      dir: './starwars/movies'
+    },
+    people: {
+      dir: './starwars/characters'
+    },
   },
 });
 ```
