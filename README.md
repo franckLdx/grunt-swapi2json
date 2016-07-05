@@ -1,6 +1,6 @@
 # grunt-swapi2json
 
-> This download swapi data available at http://swapi.co/ and store them in json files. Useful when one wanted to create a generated site or one want to store those data locally.
+> This download [swapi data](http://swapi.co/) and store them in json files. Useful when one wanted to create a generated site or one want to store those data locally.
 
 ## Getting Started
 This plugin requires Grunt `~0.4.5`
@@ -40,11 +40,11 @@ Use the [swapi resource(s)](http://swapi.co/documentation#root) name as a target
 ```js
 grunt.initConfig({
   swapi2json: {
-  	options: {
-		dir: './json'
-	}
+    options: {
+	  dir: './json'
+    },
     films: {},
-	people: {},
+    people: {},
   },
 });
 ```
@@ -82,10 +82,10 @@ Use [swapi resource(s)](http://swapi.co/documentation#root) as target name.
 grunt.initConfig({
   swapi2json: {
     options: {
-		dir: './json'
-	}
+	  dir: './json'
+    },
     films: {},
-	people: {},
+    people: {},
   },
 });
 ```
@@ -112,6 +112,7 @@ In lieu of a formal styleguide, take care to maintain the existing coding style.
 
 ## Release History
 * 2016-07-05   v1.0.0   First release.
+* 2016-07-06   v1.0.1   Fix packaging.
 
 ## To do
 

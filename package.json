@@ -1,7 +1,7 @@
 {
   "name": "grunt-swapi2json",
   "description": "This download swapi data available at http://swapi.co/ and store them in json files. Useful when one wanted to create a generated site or want to store those data locally",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "homepage": "https://github.com/franckLdx/grunt-swapi2json",
   "author": {
     "name": "Franck Ledoux",
@@ -39,9 +39,7 @@
     "swapi",
     "json"
   ],
-  "files": [
-    "tasks"
-  ],
+  "files": ["lib.js","tasks"],
   "dependencies": {
     "co": "^4.6.0",
     "swapi-node": "^0.4.0"
