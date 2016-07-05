@@ -10,15 +10,49 @@
 
 const lib = require('../lib');
 const co = require('co');
+const path = require('path');
 
-function getOne(grunt, target) {
-	return lib.getAll(target).then(
-		(data) => {
-			grunt.log.ok(`${target}: ${data.length} entyties`);
-		}, (err) => {
+const RESOURCES = ['films','people', 'planets', 'species', 'starships', 'vehicles'];
+
+function getParam(paramName, data, options) {
+	let value = data[paramName];
+	if (!value) {
+		value = options[paramName];
+	}
+	return value;
+}
+
+function getOne(grunt, task) {
+	co(function*() {
+		const done = task.async();
+		try {
+			const options = task.options({
+      			dir: '.',
+    		});
+			const data = yield lib.getAll(task.target);
+			const dir = getParam('dir', task.data, options);
+			const file = path.join(dir, `${task.target}.json`);
+			grunt.file.write(file, JSON.stringify(data));
+			grunt.log.ok(`${data.length} entities`);
+			done();
+		} catch(err) {
 			grunt.log.warn(err);
+			done(false);
 		}
-	);
+	});
+}
+
+function getAll(grunt, task) {
+	const tasks = [];
+	const config = {
+		options: task.options()
+	};
+	for (let resource of RESOURCES) {
+		tasks.push(task.name+':'+resource);
+		config[resource] = task.data;
+	}
+	grunt.config.set(task.name, config);
+	grunt.task.run(tasks);
 }
 
 module.exports = function (grunt) {
@@ -27,18 +61,10 @@ module.exports = function (grunt) {
 	// creation: http://gruntjs.com/creating-tasks
 
 	grunt.registerMultiTask('swapi2json', 'This download swapi data available at http://swapi.co/ and store them in json files. Useful when one wanted to create a generated site or want to store those data locally', function () {
-		const done = this.async();
-		const promises = [];
 		if (this.target === 'all') {
-			for (let resource of ['films','people', 'planets', 'species', 'starships', 'vehicles']) {
-				promises.push(getOne(grunt, resource));
-			}
+			getAll(grunt, this);
 		} else {
-			promises.push(getOne(grunt, this.target));
+			getOne(grunt, this);
 		}
-		Promise.all(promises).then(
-			done,
-			() => { done(false); }
-		);
 	});
 };

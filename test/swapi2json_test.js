@@ -1,30 +1,24 @@
 'use strict';
 
-var grunt = require('grunt');
+const grunt = require('grunt');
+const path = require('path');
 
-/*
-  ======== A Handy Little Nodeunit Reference ========
-  https://github.com/caolan/nodeunit
+const RESOURCES = new Map([['films',7],['people',87], ['planets',61], ['species',37], ['starships',37], ['vehicles', 39]]);
 
-  Test methods:
-    test.expect(numAssertions)
-    test.done()
-  Test assertions:
-    test.ok(value, [message])
-    test.equal(actual, expected, [message])
-    test.notEqual(actual, expected, [message])
-    test.deepEqual(actual, expected, [message])
-    test.notDeepEqual(actual, expected, [message])
-    test.strictEqual(actual, expected, [message])
-    test.notStrictEqual(actual, expected, [message])
-    test.throws(block, [error], [message])
-    test.doesNotThrow(block, [error], [message])
-    test.ifError(value)
-*/
+function checkFileContent(test, resource, expectedCount) {
+	const file = path.join(`./tmp/${resource}.json`);
+	const expected = grunt.file.exists(file);
+    test.ok(expected, `${file} has not been created`);
+	const data = grunt.file.readJSON(file);
+	test.deepEqual(data.length, expectedCount, `${file} has not the expected number of entries`);
+}
 
 exports.swapi2json = {
-  foo: function(test) {
-    test.ok(true);
-    test.done();
-  },
+	all: function(test) {
+		test.expect(RESOURCES.size()*2);
+		for (let [resource, expectedCount] of RESOURCES) {
+			checkFileContent(test, resource, expectedCount);
+  		}
+		test.done();
+	},
 };

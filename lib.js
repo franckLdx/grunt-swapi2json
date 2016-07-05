@@ -6,6 +6,8 @@
  * Licensed under the MIT license.
  */
 
+// This files contains code not specific to grunt plugin. This code could be moved in other library wihtout any modification
+
 'use strict';
 
 const swapi = require('swapi-node');

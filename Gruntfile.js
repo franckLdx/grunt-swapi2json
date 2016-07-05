@@ -14,10 +14,10 @@ module.exports = function (grunt) {
 	grunt.initConfig({
 		jshint: {
 			all: [
-        'Gruntfile.js',
-        'tasks/*.js',
-        '<%= nodeunit.tests %>'
-      ],
+        		'Gruntfile.js',
+        		'tasks/*.js',
+        		'<%= nodeunit.tests %>'
+      		],
 			options: {
 				jshintrc: '.jshintrc'
 			}
@@ -30,7 +30,9 @@ module.exports = function (grunt) {
 
 		// Configuration to be run (and then tested).
 		swapi2json: {
-			all:{}
+			all: {
+				dir: './tmp'
+			}
 		},
 
 		// Unit tests.
@@ -59,5 +61,4 @@ module.exports = function (grunt) {
 
 	// By default, lint and run all tests.
 	grunt.registerTask('default', ['jshint', 'test']);
-
 };
