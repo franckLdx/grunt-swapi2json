@@ -111,4 +111,10 @@ grunt.initConfig({
 In lieu of a formal styleguide, take care to maintain the existing coding style. Add unit tests for any new or changed functionality. Lint and test your code using [Grunt](http://gruntjs.com/).
 
 ## Release History
-_(Nothing yet)_
+* 2016-07-05   v1.0.0   First release.
+
+## To do
+
+- [ ] swapi-node is not that usefull for my needs. May be interresting to replace it
+- [ ] Replace hard coded resources by an access to swapi resources
+- [ ] Test : Replace hard coded expected entries count by a dyanmic access do swapi
