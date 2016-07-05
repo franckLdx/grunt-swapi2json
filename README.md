@@ -60,8 +60,8 @@ The directory where files are be saved.
 
 ### Usage Examples
 
-#### All
-In this example, all resources are downloaded and saved. When this is used, a task for each resources are dynamically created.
+#### All resources
+In this example, all resources are downloaded and saved.
 
 ```js
 grunt.initConfig({
@@ -72,6 +72,7 @@ grunt.initConfig({
   },
 });
 ```
+When all target is used, a task for each resources are dynamically created:
 ![screenshot](./swapi2json_all.png "All target output")
 
 #### Save some resources in a single directory
