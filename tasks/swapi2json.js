@@ -33,7 +33,7 @@ function getOne(grunt, task) {
 			const dir = getParam('dir', task.data, options);
 			const file = path.join(dir, `${task.target}.json`);
 			grunt.file.write(file, JSON.stringify(data));
-			grunt.log.ok(`${data.length} entities`);
+			grunt.log.ok(`${data.length} entities saved in ${file}`);
 			done();
 		} catch(err) {
 			grunt.log.warn(err);

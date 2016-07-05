@@ -1,6 +1,6 @@
 # grunt-swapi2json
 
-> This download swapi data available at http://swapi.co/ and store them in json files. Useful when one wanted to create a generated site or want to store those data locally
+> This download swapi data available at http://swapi.co/ and store them in json files. Useful when one wanted to create a generated site or one want to store those data locally.
 
 ## Getting Started
 This plugin requires Grunt `~0.4.5`
@@ -21,66 +21,90 @@ grunt.loadNpmTasks('grunt-swapi2json');
 
 ### Overview
 In your project's Gruntfile, add a section named `swapi2json` to the data object passed into `grunt.initConfig()`.
+You can either download all swapi resources, or download only some of them.
+
+#### Download all resources:
 
 ```js
 grunt.initConfig({
   swapi2json: {
-    options: {
-      // Task-specific options go here.
+    all: {
+      dir: './json'
     },
-    your_target: {
-      // Target-specific file lists and/or options go here.
-    },
+  },
+});
+```
+
+#### Download some resources:
+Use the [swapi resource(s)](http://swapi.co/documentation#root) name as a target:
+```js
+grunt.initConfig({
+  swapi2json: {
+  	options: {
+		dir: './json'
+	}
+    films: {},
+	people: {},
   },
 });
 ```
 
 ### Options
 
-#### options.separator
+#### dir
 Type: `String`
-Default value: `',  '`
+Default value: `.`
 
-A string value that is used to do something with whatever.
+The directory where files are be saved.
 
-#### options.punctuation
-Type: `String`
-Default value: `'.'`
-
-A string value that is used to do something else with whatever else.
 
 ### Usage Examples
 
-#### Default Options
-In this example, the default options are used to do something with whatever. So if the `testing` file has the content `Testing` and the `123` file had the content `1 2 3`, the generated result would be `Testing, 1 2 3.`
+#### All
+In this example, all resources are downloaded and saved. When this is used, a task for each resources are dynamically created.
 
 ```js
 grunt.initConfig({
   swapi2json: {
-    options: {},
-    files: {
-      'dest/default_options': ['src/testing', 'src/123'],
+    all: {
+      dir: './json'
     },
   },
 });
 ```
+![screenshot](./swapi2json_all.png "All target output")
 
-#### Custom Options
-In this example, custom options are used to do something else with whatever else. So if the `testing` file has the content `Testing` and the `123` file had the content `1 2 3`, the generated result in this case would be `Testing: 1 2 3 !!!`
+#### Save some resources in a single directory
+Use [swapi resource(s)](http://swapi.co/documentation#root) as target name.
 
 ```js
 grunt.initConfig({
   swapi2json: {
     options: {
-      separator: ': ',
-      punctuation: ' !!!',
-    },
-    files: {
-      'dest/default_options': ['src/testing', 'src/123'],
-    },
+		dir: './json'
+	}
+    films: {},
+	people: {},
   },
 });
 ```
+
+#### Save some resources in directories
+Use [swapi resource(s)](http://swapi.co/documentation#root) as target name.
+
+```js
+grunt.initConfig({
+  swapi2json: {
+    films: {
+		dir: './starwars/movies'
+	},
+	people: {
+		dir: './starwars/characters'
+	},
+  },
+});
+```
+
 
 ## Contributing
 In lieu of a formal styleguide, take care to maintain the existing coding style. Add unit tests for any new or changed functionality. Lint and test your code using [Grunt](http://gruntjs.com/).
