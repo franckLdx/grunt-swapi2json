@@ -1,6 +1,5 @@
 'use strict';
 
-/* eslint import/no-extraneous-dependencies: ["error", {"devDependencies": true}] */
 const grunt = require('grunt');
 const path = require('path');
 
@@ -17,7 +16,7 @@ function checkFileContent(test, resource, expectedCount) {
 exports.swapi2json = {
   all(test) {
     test.expect(RESOURCES.size * 2);
-    for (let [resource, expectedCount] of RESOURCES) {
+    for (const [resource, expectedCount] of RESOURCES) {
       checkFileContent(test, resource, expectedCount);
     }
     test.done();

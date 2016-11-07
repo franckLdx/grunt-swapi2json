@@ -8,8 +8,10 @@
     "mocha": true
   },
   "rules": {
-    "strict": "off",
+    "import/no-extraneous-dependencies": ["error", {"devDependencies": ["**/test/**/*.js"]}],
     "no-bitwise": ["error", { "allow": ["|"] }],
-    "no-underscore-dangle": "off"
+    "no-underscore-dangle": "off",
+    "prefer-const": ["error", {"destructuring": "all"}],
+    "strict": "off"
   }
 }
