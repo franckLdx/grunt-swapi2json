@@ -20,7 +20,7 @@ module.exports.getAll = function getAll(target) {
     const data = [];
     let page = yield swapi.get(url);
     while (page) {
-      Array.prototype.push.apply(data, page.results);
+      data.push(...page.results);
       page = yield page.nextPage();
     }
     return data;
