@@ -73,6 +73,7 @@ grunt.initConfig({
 });
 ```
 When all target is used, a task for each resources are dynamically created:
+
 ![screenshot](./swapi2json_all.png "All target output")
 
 #### Save some resources in a single directory
@@ -113,4 +114,4 @@ In lieu of a formal styleguide, take care to maintain the existing coding style.
 ## Release History
 * 2016-07-05   v1.0.0   First release.
 * 2016-07-06   v1.0.1   Fix packaging.
-* 2016-11-08   v1.0.2   Code refactoring.
+* 2016-11-08   v1.0.2   Code refactoring.
