@@ -113,9 +113,4 @@ In lieu of a formal styleguide, take care to maintain the existing coding style.
 ## Release History
 * 2016-07-05   v1.0.0   First release.
 * 2016-07-06   v1.0.1   Fix packaging.
-
-## To do
-
-- [ ] swapi-node is not that usefull for my needs. May be interresting to replace it
-- [ ] Replace hard coded resources by an access to swapi resources
-- [ ] Test : Replace hard coded expected entries count by a dyanmic access do swapi
+* 2016-11-08   v1.0.2   Code refactoring.
