@@ -8,9 +8,8 @@
 
 'use strict';
 
-const lib = require('../lib');
-const co = require('co');
 const path = require('path');
+const swapi = require('swapi-promise');
 
 const RESOURCES = ['films', 'people', 'planets', 'species', 'starships', 'vehicles'];
 
@@ -22,24 +21,22 @@ function getParam(paramName, data, options) {
   return value;
 }
 
-function getOne(grunt, task) {
-  co(function* getOneCo() {
-    const done = task.async();
-    try {
-      const options = task.options({
-        dir: '.',
-      });
-      const data = yield lib.getAll(task.target);
-      const dir = getParam('dir', task.data, options);
-      const file = path.join(dir, `${task.target}.json`);
-      grunt.file.write(file, JSON.stringify(data));
-      grunt.log.ok(`${data.length} entities saved in ${file}`);
-      done();
-    } catch (err) {
-      grunt.log.warn(err);
-      done(false);
-    }
-  });
+async function getOne(grunt, task) {
+  const done = task.async();
+  try {
+    const options = task.options({
+      dir: '.',
+    });
+    const data = await swapi.get(task.target);
+    const dir = getParam('dir', task.data, options);
+    const file = path.join(dir, `${task.target}.json`);
+    grunt.file.write(file, JSON.stringify(data));
+    grunt.log.ok(`${data.length} entities saved in ${file}`);
+    done();
+  } catch (err) {
+    grunt.log.warn(err);
+    done(false);
+  }
 }
 
 function getAll(grunt, task) {
