@@ -2,8 +2,10 @@
 
 > This download [swapi data](http://swapi.co/) and store them in json files. Useful when one wanted to create a generated site or one want to store those data locally.
 
+**This version require
+
 ## Getting Started
-This plugin requires Grunt `~0.4.5`
+**This plugin requires `Grunt ~0.4.5` and `Node v8.x or later`. For older Node, you can use `grunt-swapi2json 1.x`**
 
 If you haven't used [Grunt](http://gruntjs.com/) before, be sure to check out the [Getting Started](http://gruntjs.com/getting-started) guide, as it explains how to create a [Gruntfile](http://gruntjs.com/sample-gruntfile) as well as install and use Grunt plugins. Once you're familiar with that process, you may install this plugin with this command:
 
@@ -112,6 +114,8 @@ grunt.initConfig({
 In lieu of a formal styleguide, take care to maintain the existing coding style. Add unit tests for any new or changed functionality. Lint and test your code using [Grunt](http://gruntjs.com/).
 
 ## Release History
-* 2016-07-05   v1.0.0   First release.
-* 2016-07-06   v1.0.1   Fix packaging.
-* 2016-11-08   v1.0.2   Code refactoring.
+* v1.0.0   First release.
+* v1.0.1   Fix packaging.
+* v1.0.2   Code refactoring.
+* v1.0.3   Update dependencies.
+* v2.0.0   Use [swapi-promise](https://www.npmjs.com/package/swapi-promise) instead of swapi-node.
