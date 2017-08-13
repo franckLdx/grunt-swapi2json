@@ -52,6 +52,6 @@
     "tasks"
   ],
   "dependencies": {
-    "swapi-promise": "^1.0.1"
+    "swapi-promise": "^1.0.2"
   }
 }

@@ -119,3 +119,4 @@ In lieu of a formal styleguide, take care to maintain the existing coding style.
 * v1.0.2   Code refactoring.
 * v1.0.3   Update dependencies.
 * v2.0.0   Use [swapi-promise](https://www.npmjs.com/package/swapi-promise) instead of swapi-node.
+* v2.0.1   Use new [swapi-promise](https://www.npmjs.com/package/swapi-promise) version.
