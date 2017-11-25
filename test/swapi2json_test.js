@@ -16,9 +16,9 @@ function checkFileContent(test, resource, expectedCount) {
 exports.swapi2json = {
   all(test) {
     test.expect(RESOURCES.size * 2);
-    for (const [resource, expectedCount] of RESOURCES) {
+    RESOURCES.forEach((expectedCount, resource) => {
       checkFileContent(test, resource, expectedCount);
-    }
+    });
     test.done();
   },
 };
